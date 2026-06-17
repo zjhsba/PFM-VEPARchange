@@ -1,7 +1,6 @@
 # 数据集
 shujujji/
 DUKE/
-EventPAR/
 data/
 
 # 日志、权重、大文件
@@ -10,7 +9,6 @@ visualization_results/
 models/backbone/checkpoints/
 ckpt*.pth
 *.tar.gz
-assets/
 
 # 文档/论文
 *.pdf
