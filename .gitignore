@@ -1,0 +1,29 @@
+# 数据集
+shujujji/
+DUKE/
+EventPAR/
+data/
+
+# 日志、权重、大文件
+logs/
+visualization_results/
+models/backbone/checkpoints/
+ckpt*.pth
+*.tar.gz
+assets/
+
+# 文档/论文
+*.pdf
+Figures/
+papers/
+docs/
+
+# 缓存
+__pycache__/
+*.pyc
+
+# 其他
+COPY/
+git-lfs-*
+=1.8.0
+.vscode/

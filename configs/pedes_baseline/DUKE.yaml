@@ -1,0 +1,81 @@
+NAME: 'DUKE'
+
+DATASET:
+  TYPE: 'pedes'
+  NAME: 'DUKE'
+  ROOT: './shujujji'
+  PKL: './DUKE/duke_annotation/pad_duke.pkl'
+  TRAIN_SPLIT: 'trainval'
+  VAL_SPLIT: 'test'
+  ZERO_SHOT: False
+  LABEL: 'eval'
+  HEIGHT: 256
+  WIDTH: 192
+
+RELOAD:
+  TYPE: False
+  NAME: 'backbone'
+
+BACKBONE:
+  TYPE: 'vit_b'
+
+CLASSIFIER:
+  NAME: 'linear'
+  POOLING: 'avg'
+  SCALE: 1
+  BN: False
+
+LOSS:
+  TYPE: 'bceloss'
+  LOSS_WEIGHT: [1]
+  SAMPLE_WEIGHT: 'weight'
+  SIZESUM: True
+  LABEL_SMOOTHING: 0.1
+
+TRAIN:
+  CLIP_GRAD: True
+  BATCH_SIZE: 12
+  OPTIMIZER:
+    TYPE: 'adamw'
+    WEIGHT_DECAY: 5e-4
+  LR_SCHEDULER:
+    TYPE: 'warmup_cosine'
+    LR_FT: 3e-5
+    LR_NEW: 1e-4
+  EMA:
+    ENABLE: True
+  MAX_EPOCH: 15
+
+METRIC:
+  TYPE: 'pedestrian'
+
+VIS:
+  CAM: 'valid'
+
+# DUKE has no real event data
+DCT:
+  ENABLE: False
+  APPLY_TO_RGB: False
+  APPLY_TO_EVENT: False
+
+STEM:
+  ENABLE: False
+
+CROSS_ATTENTION:
+  ENABLE: True
+  NUM_LAYERS: 2
+  NUM_HEADS: 8
+  FUSION_TYPE: 'adaptive'
+
+HOPFIELD:
+  ENABLE: True
+  APPLY_TO_RGB: True
+  APPLY_TO_EVENT: True
+  N_PROTOTYPE: 1000
+  DROPOUT: 0.1
+
+MEMORY_HOPFIELD:
+  ENABLE: False
+
+ATTR_MEMORY:
+  ENABLE: False
